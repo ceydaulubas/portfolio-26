@@ -1,4 +1,6 @@
+import { useState } from "react";
 import type { NavItem } from "../types";
+import { Menu, X } from "lucide-react";
 
 const navItems: NavItem[] = [
   { label: "About", href: "#about" },
@@ -9,9 +11,10 @@ const navItems: NavItem[] = [
 ];
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b
+      className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b
       border-white/10"
     >
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -21,21 +24,45 @@ export const Navbar = () => {
         >
           CUT.
         </div>
-
-        <ul className="flex gap-8">
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex gap-8">
           {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                className="text-sm font-medium text-slate-300 hover:text-white
-      transition-colors duration-200"
+                className="group relative inline-block text-sm font-medium cursor-pointer text-slate-300 hover:text-pink-400 transition-colors duration-300"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-pink-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           ))}
         </ul>
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden absolute top-20 left-0 w-full bg-black/90 border-b border-white/10 py-6 px-6">
+          <ul className="flex flex-col gap-6">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="text-lg font-medium text-slate-300 active:text-pink-400 transition-colors "
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

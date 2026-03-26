@@ -3,11 +3,11 @@ import type { NavItem } from "../types";
 import { Menu, X } from "lucide-react";
 
 const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
-  { label: "Contract", href: "#contract" },
-  { label: "Resume", href: "/resume.pdf" },
+  { label: "About", href: "#about" , id: "about"},
+  { label: "Projects", href: "#projects" , id: "projects"},
+  { label: "Articles", href: "#articles" , id: "articles"},
+  { label: "Contract", href: "#contract" , id: "contract"},
+  { label: "Resume", href: "/resume.pdf" , id: "resume"},
 ];
 
 export const Navbar = () => {
@@ -24,7 +24,7 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <ul className="hidden md:flex gap-8">
           {navItems.map((item) => (
-            <li key={item.label}>
+            <li key={item.id}>
               <a
                 href={item.href}
                 className="group relative inline-block text-sm font-medium cursor-pointer text-slate-300 hover:text-pink-400 transition-colors duration-300"

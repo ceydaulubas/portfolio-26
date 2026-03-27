@@ -1,35 +1,12 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
-const aboutStoriesTwo = [
-  {
-    title: "Where Balance Began",
-    description:
-      "On the slopes of Mount Erciyes, I learned that every great journey starts with a bit of courage and a lot of momentum.",
-    image:
-      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1669416486/ceyda_portfolio/image/IMG_0047_ykcwzi.jpg",
-    size: "col-span-12 md:col-span-4",
-    rotate: "-rotate-4",
-  },
-  {
-    title: "Deep Focus in Nature",
-    description:
-      "Whether I'm navigating a new country or a complex codebase, I find my best inspiration when surrounded by nature.",
-    image:
-      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774610220/IMG_1043_hymqji.jpg",
-    size: "col-span-12 md:col-span-4",
-    rotate: "rotate-5",
-  },
-  {
-    title: "Beyond the Screen",
-    description:
-      "Whether I’m in Stockholm or a new place, I find that the best solutions come when I balance deep focus with the small, joyful moments that keep my creativity flowing.",
-    image:
-      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774609342/IMG_6268_Original_y9tzqb.jpg",
-    size: "col-span-12 md:col-span-4",
-    rotate: "-rotate-3",
-  },
-];
+interface Story {
+  title: string;
+  description: string;
+  image: string;
+  size: string;
+  rotate: string;
+}
 
 const aboutStories = [
   {
@@ -62,80 +39,97 @@ const aboutStories = [
   },
 ];
 
+const aboutStoriesTwo = [
+  {
+    title: "Where Balance Began",
+    description:
+      "On the slopes of Mount Erciyes, I learned that every great journey starts with a bit of courage and a lot of momentum.",
+    image:
+      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1669416486/ceyda_portfolio/image/IMG_0047_ykcwzi.jpg",
+    size: "col-span-12 md:col-span-4",
+    rotate: "-rotate-4",
+  },
+  {
+    title: "Deep Focus in Nature",
+    description:
+      "Whether I'm navigating a new country or a complex codebase, I find my best inspiration when surrounded by nature.",
+    image:
+      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774610220/IMG_1043_hymqji.jpg",
+    size: "col-span-12 md:col-span-4",
+    rotate: "rotate-5",
+  },
+  {
+    title: "Beyond the Screen",
+    description:
+      "Whether I’m in Stockholm or a new place, I find that the best solutions come when I balance deep focus with the small, joyful moments that keep my creativity flowing.",
+    image:
+      "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774609342/IMG_6268_Original_y9tzqb.jpg",
+    size: "col-span-12 md:col-span-4",
+    rotate: "-rotate-6",
+  },
+];
+
 const About = () => {
-  return (
-    <section
-      id="about"
-      className="w-full bg-black py-32 px-6
-      overflow-hidden"
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6, ease: easeOut },
+    }),
+  };
+
+  const StoryCard = ({ story, index }: { story: Story; index: number }) => (
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      custom={index}
+      className={`${story.size} group relative`}
     >
+      <div
+        className={`relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 ${story.rotate}
+      group-hover:rotate-0 transition-transform duration-500`}
+      >
+        <img
+          src={story.image}
+          alt={story.title}
+          className="w-full h-75 md:h-112.5 object-cover opacity-60 group-hover:opacity-100 transition-opacity
+      duration-500 scale-110 group-hover:scale-100"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+        <div
+          className="absolute bottom-0 left-0 p-8 space-y-2 translate-y-4 group-hover:translate-y-0
+      transition-transform duration-500"
+        >
+          <h4 className="text-2xl font-bold text-white">{story.title}</h4>
+          <p
+            className="text-slate-300 text-sm leading-relaxed max-w-sm opacity-0 group-hover:opacity-100
+      transition-opacity duration-500"
+          >
+            {story.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <section id="about" className="w-full bg-black py-32 px-6 overflow-hidden">
       <div className="section-container">
         <div className="mb-20 text-center md:text-left">
-          <h2
-            className="text-pink-400 font-medium tracking-widest uppercase
-      mb-2"
-          >
+          <h2 className="text-pink-400 font-medium tracking-widest uppercase mb-2">
             My Journey
           </h2>
-          <h3
-            className="text-4xl md:text-4xl font-bold text-white
-      mb-6"
-          >
+          <h3 className="text-4xl md:text-4xl font-bold text-white mb-6">
             Behind the Code
           </h3>
-          <div
-            className="h-0.5 w-32 bg-brand-gradient mx-auto
-      md:mx-0"
-          ></div>
+          <div className="h-0.5 w-32 bg-brand-gradient mx-auto md:mx-0"></div>
         </div>
         <div className="grid grid-cols-12 gap-6 md:gap-10">
           {aboutStories.map((story, index) => (
-            <motion.div
-              key={story.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className={`${story.size} group relative`}
-            >
-              {/* Görsel Kutusu */}
-              <div
-                className={`relative overflow-hidden rounded-3xl
-      bg-slate-900 border border-white/10 ${story.rotate} group-hover:rotate-0
-      transition-transform duration-500`}
-              >
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  className="w-full h-75 md:h-112.5 object-cover
-      opacity-60 group-hover:opacity-100 transition-opacity duration-500 scale-110
-      group-hover:scale-100 "
-                />
-
-                <div
-                  className="absolute inset-0 bg-linear-to-t
-      from-black/90 via-transparent to-transparent opacity-100"
-                ></div>
-
-                <div
-                  className="absolute bottom-0 left-0 p-8 space-y-2
-      translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-                >
-                  <h4
-                    className="text-2xl font-bold
-      text-white"
-                  >
-                    {story.title}
-                  </h4>
-                  <p
-                    className="text-slate-300 text-sm leading-relaxed
-      max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  >
-                    {story.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            <StoryCard key={story.title} story={story} index={index} />
           ))}
         </div>
         <div>
@@ -194,52 +188,7 @@ const About = () => {
 
         <div className="grid grid-cols-12 gap-6 md:gap-10">
           {aboutStoriesTwo.map((story, index) => (
-            <motion.div
-              key={story.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className={`${story.size} group relative`}
-            >
-              {/* Görsel Kutusu */}
-              <div
-                className={`relative overflow-hidden rounded-3xl
-      bg-slate-900 border border-white/10 ${story.rotate} group-hover:rotate-0
-      transition-transform duration-500`}
-              >
-                <img
-                  src={story.image}
-                  alt={story.title}
-                  className="w-full h-[300px] md:h-[450px] object-cover
-      opacity-60 group-hover:opacity-100 transition-opacity duration-500 scale-110
-      group-hover:scale-100 transition-transform"
-                />
-
-                <div
-                  className="absolute inset-0 bg-gradient-to-t
-      from-black/90 via-transparent to-transparent opacity-100"
-                ></div>
-
-                <div
-                  className="absolute bottom-0 left-0 p-8 space-y-2
-      translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-                >
-                  <h4
-                    className="text-2xl font-bold
-      text-white"
-                  >
-                    {story.title}
-                  </h4>
-                  <p
-                    className="text-slate-300 text-sm leading-relaxed
-      max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  >
-                    {story.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            <StoryCard key={story.title} story={story} index={index} />
           ))}
         </div>
       </div>

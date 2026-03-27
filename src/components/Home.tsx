@@ -58,7 +58,10 @@ export const Home = () => {
   }, []);
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+    >
       <div ref={vantaRef} className="absolute inset-0 z-0" />
 
       <div className="relative z-10 text-center px-6">

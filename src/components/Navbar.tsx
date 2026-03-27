@@ -3,23 +3,24 @@ import type { NavItem } from "../types";
 import { Menu, X } from "lucide-react";
 
 const navItems: NavItem[] = [
-  { label: "About", href: "#about" , id: "about"},
-  { label: "Projects", href: "#projects" , id: "projects"},
-  { label: "Articles", href: "#articles" , id: "articles"},
-  { label: "Contract", href: "#contract" , id: "contract"},
-  { label: "Resume", href: "/resume.pdf" , id: "resume"},
+  { label: "About", href: "#about", id: "about" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Articles", href: "#articles", id: "articles" },
+  { label: "Contract", href: "#contract", id: "contract" },
+  { label: "Resume", href: "/resume.pdf", id: "resume" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-black backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="section-container h-20 flex items-center justify-between">
         <div
-          className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400
+          className="text-xl font-bold bg-linear-to-r from-pink-400 to-purple-400
       bg-clip-text text-transparent hover:scale-110"
         >
-          CUT.
+          <a href="#home">CUT.</a>
         </div>
         {/* Desktop Navigation */}
         <ul className="hidden md:flex gap-8">
@@ -30,7 +31,7 @@ export const Navbar = () => {
                 className="group relative inline-block text-sm font-medium cursor-pointer text-slate-300 hover:text-pink-400 transition-colors duration-300"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-pink-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-linear-to-r from-pink-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </li>
           ))}

@@ -1,4 +1,4 @@
-import { motion, easeOut } from "framer-motion";
+import { easeOut, motion } from "motion/react";
 
 interface Story {
   title: string;
@@ -16,7 +16,7 @@ const aboutStories = [
     image:
       "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774614568/Pict0453_sobnhk.jpg",
     size: "col-span-12 md:col-span-4",
-    rotate: "rotate-1",
+    rotate: "-rotate-4",
   },
   {
     title: "The First Migration",
@@ -25,7 +25,7 @@ const aboutStories = [
     image:
       "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774610544/IMG_1176_nw9prd.jpg",
     size: "col-span-12 md:col-span-4",
-    rotate: "rotate-2",
+    rotate: "rotate-5",
   },
 
   {
@@ -35,7 +35,7 @@ const aboutStories = [
     image:
       "https://res.cloudinary.com/dxqyvjf5r/image/upload/v1774609766/graduation_oajwlq.jpg",
     size: "col-span-12 md:col-span-4",
-    rotate: "-rotate-3",
+    rotate: "-rotate-6",
   },
 ];
 
@@ -98,7 +98,7 @@ const About = () => {
           className="w-full h-75 md:h-112.5 object-cover opacity-60 group-hover:opacity-100 transition-opacity
       duration-500 scale-110 group-hover:scale-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent"></div>
         <div
           className="absolute bottom-0 left-0 p-8 space-y-2 translate-y-4 group-hover:translate-y-0
       transition-transform duration-500"

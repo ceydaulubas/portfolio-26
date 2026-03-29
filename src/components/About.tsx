@@ -133,56 +133,52 @@ const About = () => {
           ))}
         </div>
         <div>
-          <p className="text-slate-300 text-lg md:text-xl leading-relaxed mt-12 mb-6 ">
-            My journey began in Kayseri, Turkey, in 1993, born at the foot of a
-            Great Mountain. It was there, on the snowy slopes of Mount Erciyes,
-            that I first learned the value of balance and momentum through
-            snowboarding. In 2011, I packed my bags for my "first migration"
-            moving to the vibrant, chaotic energy of Istanbul for university. I
-            started my career in a marketing department, where I spent 2.5 years
-            learning how businesses speak to people. But I felt a different
-            calling. I didn't just want to talk about products, I wanted to
-            build them. I craved a challenge that was more technical, more
-            creative, and more complex.
+          <h4 className="text-pink-200 mt-12 text-lg md:text-xl leading-relaxed ">
+            The First Ascent
+          </h4>
+          <p className="text-slate-300 text-lg md:text-xl leading-relaxed  ">
+            My journey began in Kayseri, Turkey, a city where the silhouette of
+            Mount Erciyes was a constant backdrop to my daily life. It was there
+            that I discovered my passion for snowboarding, learning the value of
+            balance and momentum long before I wrote my first line of code. In
+            2011, I moved to the vibrant energy of Istanbul for university
+            marking the start of my first 'migration story.
           </p>
-          <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-6 ">
-            I began teaching myself to code, and what started as a curiosity
-            quickly turned into a passion. I loved the logic, the problem
-            solving, and the immediate spark of seeing an idea come to life on a
-            screen. To truly ground myself in this new world, I completed an
-            intensive software development bootcamp in late 2020. My transition
-            into tech led me to Digital Turbine, where I cut my teeth as a
-            Junior Software Engineer. I spent my days balancing the fast-paced
-            world of hypercasual game development with the precision of building
-            full-stack microsites. Eventually, my heart settled on Frontend
-            Development the perfect intersection of my marketing roots and my
-            engineering skills. At NTT Business Solutions, I spent about two
-            years refining my craft, working across diverse projects and
-            discovering the joy of creating seamless user experiences.
+          <h4 className="text-pink-200 mt-6 text-lg md:text-xl leading-relaxed ">
+            The Pivot to Tech
+          </h4>
+          <p className="text-slate-300 text-lg md:text-xl leading-relaxed ">
+            I started in marketing, learning how businesses speak to people. But
+            I craved more. I didn’t just want to talk about products; I wanted
+            to build them. In the end of 2020, I taught myself to code,
+            completed an intensive bootcamp in Amsterdam, and transitioned into
+            software development. From software development focused on game
+            development at Digital Turbine to refining my craft at NTT Business
+            Solutions, I found my true passion in Frontend Development, the
+            perfect intersection of my marketing roots and engineering logic.
           </p>
-          <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-6">
-            While my career was evolving, so was my life. After navigating a
-            long-distance relationship and traveling across 10+ countries
-            together, I married my husband in 2023. This sparked my second
-            migration story ,a move from the heat of Istanbul to the cool,
-            creative air of Stockholm. Since arriving in Sweden, I’ve embraced
-            the local tech scene, most recently contributing my skills to the
-            Haypp Group. Although that chapter was brief, it was a pivotal time
-            for self-discovery, confirming exactly where I want to go next in my
-            professional journey.
+          <h4 className="text-pink-200 mt-6 text-lg md:text-xl leading-relaxed ">
+            A New Chapter in Stockholm
+          </h4>
+          <p className="text-slate-300 text-lg md:text-xl leading-relaxed">
+            Life brought another "migration story" in 2025: moving from the heat
+            of Istanbul to the cool, creative air of Stockholm. Since arriving,
+            I’ve embraced the Swedish tech scene (most recently at Haypp Group)
+            and the unique balance of life here.
+          </p>
+          <h4 className="text-pink-200 mt-6 text-lg md:text-xl leading-relaxed ">
+            Where I Am Now
+          </h4>
+          <p className="text-slate-300 text-lg md:text-xl leading-relaxed">
+            Today, you can find me in a cozy Stockholm cafe, my home office, or
+            surrounded by nature, mastering new technologies. When I’m not
+            coding, I’m finding my center through Yoga or Pilates, exploring a
+            new country, or joining local events to keep my perspective fresh.
           </p>
           <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-12">
-            Today, you can find me in a cozy Stockholm cafe, my home office or
-            or surrounded by nature, deeply focused on mastering new
-            technologies and sharpening my software development skills. When I’m
-            not coding, I’m likely finding my center through Yoga or Pilates,
-            exploring a new corner of the world, or meeting new people in this
-            beautiful city I now call home. I love joining new events and
-            discovering the little things that bring me joy, as they keep my
-            perspective fresh and my creativity flowing. I am an explorer at
-            heart whether I’m navigating a new codebase or a new country. I’m
-            always open to new opportunities, challenging projects, and the
-            chance to build something meaningful.
+            I am an explorer at heart whether navigating a new codebase or a new
+            country. I’m always open to new opportunities to build something
+            meaningful.
           </p>
         </div>
 

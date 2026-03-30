@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Loader2, ArrowLeft, ArrowRight } from "lucide-react";
-import type { MediumArticle } from "../types/index";
-
 import ArticleCard from "./ArticleCard";
+import useMediumArticles from "../hooks/useMediumArticles";
 
 const Article = () => {
-  const [articles, setArticles] = useState<MediumArticle[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { articles, isLoading, error } = useMediumArticles("ceydaulubas");
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 3;
+
+  console.log("articles", articles);
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
@@ -18,29 +18,6 @@ const Article = () => {
   );
 
   const totalPages = Math.ceil(articles.length / articlesPerPage);
-
-  useEffect(() => {
-    const userName = "@ceydaulubas";
-    const rssUrl = `https://medium.com/feed/${userName}`;
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
-
-    const fetchArticle = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        if (data.status === "ok" && data.items.length > 0) {
-          setArticles(data.items);
-        } else {
-          console.error("No articles found or API error:", data);
-        }
-      } catch (error) {
-        console.error("Error fetching article:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchArticle();
-  }, []);
 
   return (
     <section

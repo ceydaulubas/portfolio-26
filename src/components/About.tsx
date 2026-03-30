@@ -1,12 +1,5 @@
 import { easeOut, motion } from "motion/react";
-
-interface Story {
-  title: string;
-  description: string;
-  image: string;
-  size: string;
-  rotate: string;
-}
+import type { Story } from "../types";
 
 const aboutStories = [
   {
@@ -120,7 +113,7 @@ const About = () => {
       <div className="section-container">
         <div className="mb-20 text-center md:text-left">
           <h2 className="text-pink-400 font-medium tracking-widest uppercase mb-2">
-            My Journey
+            01. My Journey
           </h2>
           <h3 className="text-4xl md:text-4xl font-bold text-white mb-6">
             Behind the Code

@@ -4,7 +4,7 @@ import ArticleCard from "./ArticleCard";
 import useMediumArticles from "../hooks/useMediumArticles";
 
 const Article = () => {
-  const { articles, isLoading, error } = useMediumArticles("ceydaulubas");
+  const { articles, isLoading } = useMediumArticles("ceydaulubas");
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 3;
 

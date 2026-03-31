@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { MediumArticle } from "../types/index";
 
 const useMediumArticles = (userName: string) => {
-  console.log("userName", userName);
   const [articles, setArticles] = useState<MediumArticle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

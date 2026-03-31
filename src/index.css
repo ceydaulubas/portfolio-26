@@ -8,7 +8,7 @@ html {
   @apply max-w-6xl mx-auto px-6 w-full;
 }
 
-Custom Scrollbar for the Big Box .custom-scrollbar::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {

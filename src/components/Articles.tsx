@@ -28,7 +28,7 @@ const Article = () => {
         {/* Title */}
         <div className="mb-12 text-center md:text-left">
           <h2 className="text-pink-400 font-medium tracking-widest uppercase mb-2">
-            02. Articles
+            03. Articles
           </h2>
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Medium Articles & Personal Blog

@@ -2,10 +2,9 @@ import { useEffect, useRef } from "react";
 import NET from "vanta/src/vanta.net";
 import * as THREE from "three";
 
-// icon
-import { Mail } from "lucide-react";
 import { FiLinkedin } from "react-icons/fi";
 import { VscGithubAlt } from "react-icons/vsc";
+import { FaMediumM } from "react-icons/fa";
 
 const socialLinks = [
   {
@@ -19,13 +18,13 @@ const socialLinks = [
     label: "linkedin",
   },
   {
-    icon: <Mail size={30} />,
-    href: "mailto:ceyda.ulubas@gmail.com",
-    label: "Email",
+    icon: <FaMediumM size={30} />,
+    href: "https://www.medium.com/@ceydaulubas",
+    label: "Medium",
   },
 ];
 
-export const Home = () => {
+const Home = () => {
   const vantaRef = useRef<HTMLDivElement>(null);
   const vantaEffectRef = useRef<any>(null);
 
@@ -96,3 +95,5 @@ export const Home = () => {
     </section>
   );
 };
+
+export default Home;

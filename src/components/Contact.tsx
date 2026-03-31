@@ -1,91 +1,73 @@
-import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { Send, Loader2 } from "lucide-react";
+import useContactForm from "../hooks/useContactForm";
+import { contactDetails } from "../constants/contactData";
+import type { ContactInfo } from "../types";
 import type { SubmitEventHandler } from "react";
 
+const InfoItem = ({ icon: Icon, label, value }: ContactInfo) => (
+  <div className="flex items-center gap-5 mb-8 group cursor-default">
+    <div
+      className="rounded-2xl bg-white/5 p-4 border border-white/5
+      group-hover:border-pink-500/30 group-hover:bg-pink-500/10 transition-all duration-300"
+    >
+      <Icon
+        size={24}
+        className="text-pink-400 group-hover:scale-110 transition-transform"
+      />
+    </div>
+    <div className="flex flex-col">
+      <span
+        className="text-[10px] uppercase tracking-widest text-slate-500 font-mono
+      mb-1"
+      >
+        {label}
+      </span>
+      <span
+        className="text-white font-medium group-hover:text-pink-300
+      transition-colors"
+      >
+        {value}
+      </span>
+    </div>
+  </div>
+);
+
 const Contact = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [isSending, setIsSending] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const { sendEmail, status } = useContactForm();
 
-  const sendEmail: SubmitEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    setIsSending(true);
-
-    const serviceId = import.meta.env.VITE_YOUR_SERVICE_ID;
-    const templateId = import.meta.env.VITE_YOUR_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_YOUR_PUBLIC_KEY;
-
-    emailjs
-      .sendForm(serviceId, templateId, formRef.current!, publicKey)
-      .then(() => {
-        setStatus("success");
-        formRef.current?.reset();
-      })
-      .catch((error) => {
-        console.log("Hata Detayı:", error.text || error);
-        setStatus("error");
-      })
-      .finally(() => {
-        setIsSending(false);
-        // 3 saniye sonra mesajı gizle
-        setTimeout(() => setStatus("idle"), 3000);
-      });
+    const form = e.currentTarget;
+    sendEmail(form);
   };
-
   return (
-    <div className="bg-[#050505] text-white ">
-      <div id="contact" className="section-container py-16">
-        <h1 className=" flex flex-col items-center font-bold text-6xl">
-          {" "}
-          Contact
-        </h1>
+    <section id="contact" className="w-full bg-[#050505] py-32 px-6">
+      <div className="section-container ">
+        <div className="mb-20 text-center md:text-left">
+          <h2 className="text-pink-500 font-medium tracking-widest uppercase mb-2">
+            04. Get In Touch
+          </h2>
+          <h3 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Let's Connect
+          </h3>
+          <div className="h-0.5 w-32 bg-brand-gradient mx-auto md:mx-0"></div>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-16 mt-10">
-          <div>
-            <h3 className="text-2xl font-bold mb-4"> Get In Touch </h3>
+          <div className="space-y-8">
             <p className="mb-8 text-gray-400">
-              {" "}
               Feel free to reach out to discuss your projects or explore
               collaboration opportunities.
             </p>
-
-            <div className="flex items-center gap-4 mb-6">
-              <div className="rounded-full bg-pink-500/30 p-2">
-                <Mail color="#FB64B6" />
-              </div>
-              <div>
-                <p>Email</p>
-                <p>ceyda.ulubas@gmail.com</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 mb-6">
-              <div className="rounded-full bg-pink-500/30 p-2">
-                <Phone color="#FB64B6" />
-              </div>
-              <div>
-                <p>Phone</p>
-                <p>+46 76 972 10 30</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 mb-6">
-              <div className="rounded-full bg-pink-500/30 p-2">
-                <MapPin color="#FB64B6" />
-              </div>
-              <div>
-                <p>Location</p>
-                <p>Stockholm, Sweden</p>
-              </div>
+            <div className="mt-10">
+              {contactDetails.map((info) => (
+                <InfoItem key={info.label} {...info} />
+              ))}
             </div>
           </div>
+
           <div className="w-full md:w-1/2">
-            <form
-              ref={formRef}
-              onSubmit={sendEmail}
-              className="flex flex-col gap-4"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <label
                 htmlFor="name"
                 className="block text-sm/6 font-medium text-white"
@@ -129,7 +111,7 @@ const Contact = () => {
                 type="submit"
                 className="flex justify-center items-center gap-2 px-6 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
               >
-                {isSending ? (
+                {status === "loading" ? (
                   <>
                     <Loader2 className="animate-spin" />
                     <span>Sending...</span>
@@ -154,7 +136,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

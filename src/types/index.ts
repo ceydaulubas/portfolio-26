@@ -21,3 +21,9 @@ export interface MediumArticle {
   content: string;
   categories: string[];
 }
+
+export interface ContactInfo {
+  label: string;
+  value: string;
+  icon: React.ElementType;
+}

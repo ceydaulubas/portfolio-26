@@ -7,7 +7,7 @@ const navItems: NavItem[] = [
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Articles", href: "#articles", id: "articles" },
   { label: "Contact", href: "#contact", id: "contact" },
-  { label: "Resume", href: "/resume.pdf", id: "resume" },
+  { label: "Resume", href: "#resume", id: "resume" },
 ];
 
 export const Navbar = () => {
